@@ -1,0 +1,93 @@
+<% layout('/layouts/boilerplate') %>
+  <div class="row mb-3">
+      <h1 class="text-center">NEW TEMPLE</h1>
+      <div class="col-md-6 offset-md-3">
+       <!--  <div class="card shadow"> -->
+            <!--  <div class="card-body"> -->
+        <form action="/temple" method="POST" class="validation-form" novalidate enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="name">NAME</label>
+                <input class="form-control" type="text" id="name" name="temple[name]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">LOCATION</label>
+                <input class="form-control" type="text" id="location" name="temple[location]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="website">WEBSITE</label>
+              <input class="form-control" type="text" id="website" name="temple[website]" required>
+              <div class="valid-feedback">
+                  Looks good!
+                </div>
+          </div>
+          <div class='mb-3'>
+            <label class="form-label" for="appt"><b>Temple Timing</b> </label><br>
+            <b>Morning -</b> <br> from<input class="form-control" type="time" id="appt" name="temple[mortimein]"
+                required> to
+            <input class="form-control" type="time" id="appt" name="temple[mortimeout]" required>
+            <br> <b>Afternoon -</b> <br> from<input class="form-control" type="time" id="appt" name="temple[aftimein]"
+                required>
+            to
+            <input class="form-control" type="time" id="appt" name="temple[aftimeout]" required>
+            <div class=" valid-feedback">
+                Time Ok!
+            </div>
+            <div class='invalid-feedback'>
+                Please Pick the Time!
+            </div>
+          </div>
+           <!--  <div class="mb-3">
+                <label class="form-label" for="image">IMAGE</label>
+                <input class="form-control" type="text" id="image" name="campground[image]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div> -->
+            <div class="mb-3">
+               <!--  if we want to add more than 1 file use "multiple" -->
+               
+               <label for="image" class="form-label">IMAGE</label>
+               <input class="form-control" type="file" id="image" name="image" multiple>
+               <!--  <input type="file" name="image" id="" multiple> -->
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="price">ENTRY FEE</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">₹</span>
+                    <input type="text" class="form-control" placeholder="0.00" aria-label="price" aria-describedby="price-label" name="temple[price]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+              
+            </div>
+            <div class="mb-3">
+                <label for="describtion" class="form-label">INFO</label>
+                <textarea class="form-control" type="text" id="description" rows="3" name="temple[describtion]" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div>
+            <div class="mb-3">
+              <label for="contact" class="form-label">CONTACT</label>
+              <textarea class="form-control" type="text" id="contact" rows="3" name="temple[contact]" required></textarea>
+              <div class="valid-feedback">
+                  Looks good!
+                </div>
+          </div>
+            <div class="mb-3">
+                <button class="btn btn-success">Add Temple</button>
+            </div>
+        </form>
+        <a href="/temple">ALL TEMPLE</a>
+      <!-- </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+

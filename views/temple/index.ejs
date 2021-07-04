@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate')%>
+<div id="cluster-map"></div>
+    <h1>TEMPLE LISTS</h1>
+    
+    <ul>
+        <% for(let temple of temples){ %> 
+            <div class="card mb-3">
+                <div class="row ">
+                    <div class="col-md-4">
+                       <!--  if condition for if url undefined error occured its helps to solve -->
+                        <% if(temple.images.length) { %> 
+                        <img class="img-fluid" src="<%=temple.images[0].url%>" alt="">
+                        <% } else { %>
+                            <img class="img-fluid" src="https://res.cloudinary.com/appinessyelpcamp/image/upload/v1624800885/YelpCamp/fv9xzj5zdabietefzdof.jpg" alt="">  
+                            <%}%>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h2 class="card-title"><%=temple.name%></h2>
+                            
+                            <p class="card-text"><%=temple.describtion%></p>
+                            <p class="card-text">
+                                <small class="text-muted"><%=temple.location%></small>
+                              
+                            </p>
+                            <a href="/temple/<%=temple.id%>" class="btn btn-primary">view <%=temple.name%></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+        <% } %>
+    </ul>
+
+    <script> 
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>'; //clusterMap
+        const temples = {features : <%- JSON.stringify(temples) %> } ; //to get correct format of coordintes
+        //here using campgrounds
+    </script>
+    <script src="/javascripts/clusterMap.js"></script>
+   

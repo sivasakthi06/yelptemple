@@ -1,0 +1,93 @@
+<% layout('/layouts/boilerplate') %>
+   
+
+<div class="row">
+    <h1 class="text-center">EDIT TEMPLE</h1>
+    <div class="col-md-6 offset-md-3">
+        <form action="/temple/<%=temple._id%>?_method=PUT" method="POST" class="validation-form" novalidate 
+          enctype="multipart/form-data">
+          <div class="mb-3">
+              <label class="form-label" for="name">NAME</label>
+              <input class="form-control" type="text" id="name" name="temple[name]" value="<%=temple.name%>" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label" for="location">LOCATION</label>
+              <input class="form-control" type="text" id="location" name="temple[location]" value="<%=temple.location%>" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="website">WEBSITE</label>
+            <input class="form-control" type="text" id="website" name="temple[website]" value="<%=temple.website%>" required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="contact">CONTACT</label>
+          <input class="form-control" type="text" id="contact" name="temple[contact]" value="<%=temple.contact%>" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+      </div>
+          <div class="mb-3">
+              
+              <label for="image" class="form-label">ADD IMAGE</label>
+              <input class="form-control" type="file" id="image" name="temple[image]" value="<%=temple.image%>"multiple>
+   
+          </div>
+          <div class="mb-3">
+              <label class="form-label" for="price">PRICE</label>
+              <div class="input-group">
+                  <span class="input-group-text" id="price-label">₹</span>
+                  <input type="text" class="form-control" placeholder="0.00" aria-label="price" aria-describedby="price-label" name="temple[price]" value="<%=temple.price%>" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+            
+          </div>
+          <div class='mb-3'>
+            <label class="form-label" for="appt"><b>Temple Vision Time</b> </label><br>
+            <b>Morning -</b> <br> from<input class="form-control" type="time" id="appt" name="temple[mortimein]"
+            value="<%=temple.mortimein%>" required> to
+            <input class="form-control" type="time" id="appt" name="temple[mortimeout]" value="<%=temple.mortimeout%>"required>
+            <br> <b>Afternoon -</b> <br> from<input class="form-control" type="time" id="appt" name="temple[aftimein]"
+            value="<%=temple.aftimein%>" required>
+            to
+            <input class="form-control" type="time" id="appt" name="temple[aftimeout]" value="<%=temple.aftimeout%>"required>
+            <div class=" valid-feedback">
+                Time Ok!
+            </div>
+            <div class='invalid-feedback'>
+                Please Pick the Time!
+            </div>
+          </div>
+          <div class="mb-3">
+              <label for="describtion" class="form-label">DESCRIBTION</label>
+              <textarea class="form-control" type="text" id="description" rows="3" name="temple[describtion]" required><%=temple.describtion%></textarea>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="mb-3"> <!-- here src: .thumbnail was get from campground model -->
+              <% temple.images.forEach(function(img,i) { %>
+               
+                <img src="<%=img.thumbnail%>" alt="" class="img-thumbnail">
+                <div class="form-check-inline">
+                  <input type="checkbox" name="deleteImages[]" id="image-<%=i%>" value="<%=img.filename%>">
+                </div>
+                <label for="image-<%=i%>">DELETE?</label>
+                <%})%>
+            </div>
+          <div class="mb-3">
+              <button class="btn btn-info">Update temple</button>
+          </div>
+      </form>
+      <a href="/temple/<%= temple._id %>">BACK</a>
+    </div>
+</div>
